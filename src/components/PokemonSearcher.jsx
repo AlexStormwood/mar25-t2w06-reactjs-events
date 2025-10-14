@@ -1,4 +1,5 @@
 import React from "react";
+import { PokemonSearcherDataDisplay } from "./PokemonSearcherDataDisplay";
 
 
 export class PokemonSearcher extends React.Component {
@@ -30,12 +31,12 @@ export class PokemonSearcher extends React.Component {
 				
 				/> 
 			*/}
-			{/*
+			
 			 	<PokemonSearcherDataDisplay 
 					nameToShow={this.state.responseName} 
 					imageToShow={this.state.responseSpriteUrl} 
 				/> 
-			*/}
+			
 		</section>
 	}
 }
