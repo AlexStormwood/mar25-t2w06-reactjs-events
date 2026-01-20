@@ -1,0 +1,42 @@
+name: Deploy React to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "lts/*"
+
+      - name: Install project dependencies
+        run: |
+          npm install
+      - name: Build the project
+        run: npm run build
+
+          # Set up GitHub Pages based on the build from the React app
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload the build as an artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: "./dist"
+      - name: Deploy to GitHub Pages
+        id: deployment # id is useful for reusing data in other parts of the workflow
+        uses: actions/deploy-pages@v4
