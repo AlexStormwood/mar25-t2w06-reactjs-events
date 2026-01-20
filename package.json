@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://alexstormwood.github.io/mar25-t2w06-reactjs-events/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
